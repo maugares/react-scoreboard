@@ -2,25 +2,27 @@ import React, { Component } from 'react'
 import Player from './Player'
 import './Scoreboard.css'
 
-const players = [
-  {
-    id: 1,
-    name: 'Wouter',
-    score: 2,
-  },
-  {
-    id: 2,
-    name: 'Mimi',
-    score: 5,
-  },
-  {
-    id: 3,
-    name: 'MIlan',
-    score: 4,
-  },
-]
-
 export default class Scoreboard extends Component {
+  state = {
+    players: [
+      {
+        id: 1,
+        name: 'Wouter',
+        score: 2,
+      },
+      {
+        id: 2,
+        name: 'Mimi',
+        score: 5,
+      },
+      {
+        id: 3,
+        name: 'MIlan',
+        score: 4,
+      },
+    ]
+  }
+
   renderPlayer(player) {
     return <Player
       key={player.id}
@@ -35,7 +37,7 @@ export default class Scoreboard extends Component {
         <h1>Scoreboard</h1>
         <ul>
           {
-            players
+            this.state.players
               .sort((a, b) => b.score - a.score)
               .map(this.renderPlayer)
           }
